@@ -1,13 +1,16 @@
 import { useState } from "react";
-//import ColorPalette from "../Images/palette.svg";
 
 function InputNotes(props) {
   const [note, setNote] = useState({
     title: "",
     content: ""
   });
-  function clickHandler(e) {
+
+  function submitHandler(e) {
     e.preventDefault();
+    if (!note.title.trim() && !note.content.trim()) {
+      return;
+    }
     props.onAdd(note);
     setNote({
       title: "",
@@ -25,7 +28,7 @@ function InputNotes(props) {
   }
   return (
     <div>
-      <form className="input-area">
+      <form className="input-area" onSubmit={submitHandler}>
         <input
           onChange={changeHandler}
           name="title"
@@ -39,14 +42,9 @@ function InputNotes(props) {
           placeholder="Doodle your thoughts"
           rows="3"
         ></textarea>
-        <button className="add-note" onClick={clickHandler}>
+        <button className="add-note" type="submit">
           Add
         </button>
-        {/*<img
-          className="color-palette"
-          src={ColorPalette}
-          alt="Color pallete Logo"
-        />*/}
       </form>
     </div>
   );
