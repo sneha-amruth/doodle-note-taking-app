@@ -4,16 +4,33 @@
   box-sizing: border-box;
 }
 
-.App {
-  font-family: Jost, sans-serif;
-  text-align: center;
-}
 body {
-  background-color: #c1e4e0;
+  min-height: 100vh;
+  background: linear-gradient(160deg, #c1e4e0 0%, #a8d8d8 100%);
 }
+
+.App {
+  font-family: "Jost", sans-serif;
+  text-align: center;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
 .header-style {
-  padding: 10px;
-  margin: 10px;
+  padding: 24px 10px 10px;
+  margin-bottom: 10px;
+}
+
+.header-style h1 {
+  font-size: 2.6em;
+  letter-spacing: 1px;
+  color: #1f4e4a;
+}
+
+.header-tagline {
+  color: #3c6c67;
+  font-size: 0.95em;
+  margin-top: 4px;
 }
 
 form {
@@ -21,49 +38,74 @@ form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-radius: 7px;
-  box-shadow: 0 1px 5px rgb(138, 137, 137);
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(31, 78, 74, 0.18);
   width: 480px;
-  padding: 15px;
-  margin: 30px auto 20px auto;
+  max-width: 90vw;
+  padding: 18px;
+  margin: 30px auto 24px auto;
+  transition: box-shadow 0.2s ease;
+}
+
+form:hover {
+  box-shadow: 0 6px 18px rgba(31, 78, 74, 0.25);
 }
 
 form input,
 form textarea {
-  background-color: #faf4e6;
+  width: 100%;
+  background-color: transparent;
   border: none;
   outline: none;
-  font-size: 1.2em;
+  font-size: 1.15em;
   font-family: inherit;
+  padding: 6px 4px;
+  resize: none;
 }
 
-form .add-note,
-.delete-note {
-  width: 50px;
-  padding: 5px;
-  background-color: #faf4e6;
-  color: black;
-  border: 2px solid black;
+form input {
+  font-weight: 600;
+  border-bottom: 1px solid rgba(31, 78, 74, 0.15);
+  margin-bottom: 6px;
+}
+
+form .add-note {
+  align-self: flex-end;
+  margin-top: 8px;
+  width: 84px;
+  padding: 8px 0;
+  background-color: #1f4e4a;
+  color: white;
+  border: none;
   border-radius: 8px;
+  font-family: inherit;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
 }
 
 form .add-note:hover {
-  background-color: black;
-  color: white;
+  background-color: #163a37;
 }
 
-.delete-note:hover {
-  background-color: black;
-  color: white;
+form .add-note:active {
+  transform: scale(0.97);
 }
 
-.color-palette {
-  border-radius: 4px;
-  width: 30px;
+.empty-state {
+  color: #3c6c67;
+  margin-top: 40px;
+  font-size: 1.1em;
 }
+
 .saved-notes-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 .saved-note {
@@ -71,11 +113,45 @@ form .add-note:hover {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  margin: 4px;
-  width: 300px;
-  height: 200px;
-  padding: 8px;
+  width: 280px;
+  min-height: 180px;
+  padding: 14px;
   background-color: #fad2e1;
-  box-shadow: 0 1px 5px rgb(138, 137, 137);
-  border-radius: 7px;
+  box-shadow: 0 3px 10px rgba(31, 78, 74, 0.15);
+  border-radius: 10px;
+  text-align: left;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.saved-note:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(31, 78, 74, 0.22);
+}
+
+.saved-note h3 {
+  word-break: break-word;
+  margin-bottom: 6px;
+}
+
+.saved-note p {
+  word-break: break-word;
+  white-space: pre-wrap;
+  color: #4a4a4a;
+}
+
+.delete-note {
+  align-self: flex-end;
+  padding: 6px 14px;
+  background-color: transparent;
+  color: #8a2846;
+  border: 1.5px solid #8a2846;
+  border-radius: 8px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.delete-note:hover {
+  background-color: #8a2846;
+  color: white;
 }
